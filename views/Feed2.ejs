@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistec-Connect</title>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light  fixed-top stroke">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <div style="display: flex; flex-direction: row;">
+                    <img src="SISTec_Logo.png" alt="Logo" class="d-inline-block align-text-center" id="brand_img">
+                    <div class="title">
+                        <h2>SISTec-Connect</h2>
+                    </div>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-5 nav_items">
+                        <li class="nav-item">
+                            <i class='bx bxs-home' style='color:#2203d4'></i>
+                            <a class="nav_texts act" aria-current="page" href="/">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <i class='bx bxs-message-dots' style='color:#2203d4'></i>
+                            <a class="nav_texts" href="/message">Message</a>
+                        </li>
+                        <li class="nav-item">
+                            <i class='bx bxs-bell' style='color:#2203d4'></i>
+                            <a class="nav_texts" aria-current="page" href="#">Notification</a>
+                        </li>
+                        <li class="nav-item">
+                            <i class='bx bxs-user' style='color:#2203d4'></i>
+                            <a class="nav_texts profile">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <i class='bx bxs-user' style='color:#2203d4'></i>
+                            <a class="nav_texts post">POST</a>
+                        </li>
+                        <li class="nav-item">
+                            <i class='bx bxs-log-out' style='color:#2203d4'></i>
+                            <a class="nav_texts" href="/logout" type="submit">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div>
+    </div>
+    <h1>users Nearby</h1>
+    <div class="main_bar">
+        <% postUsers.forEach(postUser=> { %>
+            <div class="main_one">
+
+                <div class="post_card">
+                    <div class="post_content">
+                        <div>
+                            <img src="NoUser.jfif" alt="" class="profile_pic_on_post">
+                            <h4>
+                                <% if (postUser && postUser.user) { %>
+                                    <h4>
+                                        <%= postUser.user.username %>
+                                    </h4>
+                                    <% } %>
+
+                            </h4>
+                        </div>
+                        <div>
+                            <img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAANZJREFUSEvtldENgjAURU+/4JNN1A1wAh1BN3AD6wSu4Ag6gY6Am/gJMRHTUmP4MM1rkIak/NLkvHPfhSoiPSoSlwQeLfnAqPMNtPtuSnWA+iSdOACcl9Be+6DXAp6VBB4C1l/bD8pa63+DYxkbL7tjZ6j0SDuWBPr7bMCO44ILyFfdCPUFeEjHCTEuIDOf09zBKmiWUngAONsBx76h2koLNiUwJuobMHPWd2jKEaK2OFOutSvXWQq1f3hpG4c6PzVwuhbTtejv/tRa7TfynUjGvoQGe/8GXNpAH6vWZkYAAAAASUVORK5CYII=" />
+                        </div>
+                    </div>
+                    <div class="description">
+                        <p>
+                            <%= postUser.post.desc %>
+                        </p>
+                    </div>
+                    <div class="post_image_div">
+                        <img src="<%= postUser.post.img %>" alt="" class="post_image">
+                    </div>
+                    <div class="Likes_comments">
+                        <div class="likes">
+
+                            <img class="like-button" data-post-id="<%=postUser.post._id %>" width="45px"
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAWpJREFUSEvN1t1RwkAUhuF3nZHkTqxA7SB2gB3YgVCBWoGhArUCQwWWIB1ICXSg3oU4wzobsiZkNslufga4YQjLPjmHky8RHOglDuRy7LB/uetMvK7vkO066ir2JyCfgAAYZ+A3sATxCvFydyxddw9MSutWsH2E35XpZCta7YcZWlfgS/blQ30XZAjJvLzGAI8iEHf9Dp2MIJkV9yzB/hTkW7+o3k3MII7+P+0jnhqei2Fg1rC5MsCnAZx8DoRm226v9bAVWu2pIXkeFs7bXYCtJrnjeYk5xKHapACPbkG8d9y54efiRl//xakeg/c1LLw5B1QIlZNriGtYlyIXkEwrLieVtVJF3FnPlf+ACIpZb0iuNHs/+oXz/7aiYn24zwTbT6wGOL3r9BCfZtQwXOUGd8GrUQu4beX1qCXsijejDrAtboc6wk24PdoCrsLd0JZwGXdHO8AaV+/544xL2h37A71LLXZrD1bxH5WaZh9FsOaVAAAAAElFTkSuQmCC" />
+                            <h4 class="likes-count"><span class="likes-number">
+                                    <%= postUser.post.likes.length %>
+                                </span></h4>
+                        </div>
+                        <div class="comments">
+                            <img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAANtJREFUSEvtl8ERwiAQRR9ewjEl2IG2YAVaglagHRgrsARtwQq0BEuwBI/xIplFo6h4A+KM5MZk5j92+cBH0dGnOuLyDi5Bj+HaDzuh3gnqHXBudV1wCcUeGIaFPtSOcBm1cAdcLIB1JOhdVs2g3srAAesKzDIyeAV1lcG51RF8prK5pKt5H0fwFtlctqv/Z64k97Hv5EISyAEYxPDzTdPravtHMtcECJC5TAnMX4v4Dg5crJ6C2TxFk4HtbnHgScEuPDm4hYt3PsJe4OX1y4nhbKj/mSdMkrIF0gBFmWEfJ058hAAAAABJRU5ErkJggg==" />
+                            <p class="comment_count" style="
+                        margin: 0px;
+                    ">0</p>
+                        </div>
+                        <div class="share">
+                            <img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAXhJREFUSEvtlt1NhEAQx3/4cPB4HXgdaAdeCdeBWIFagXagViBWoB14dqAV3FmB+nZg4pohiHAsy4AbiYmT8MTs/Objvx8BI1kwEpe/DI5i2CR9O+eh4nAJZgXZUR+4JzAHYJI+cI9gqVcP9wzWwweAoxmwW8xzBuYE2K/Pt7tyJXiygOAQmANTnYjc8A5wNAdzDUiVA6wd7gBPkqLKAcDqEju8BRxeAsc/JFaWN+EWcD7PW3/QMtIVpCLE3LbBUwhXegGp03uGjwW8P7aAQ8noQh1O5/gEqeyG16r7VsWhZLSni6fxMjeQxTbPKlja/OII9wDBsvi/BuSTY1KEaEv2FFL5Z7UKON+z93UvyXgngc0X0BJEbie5JEp7AxNDdufqSRUcF4eF+Et1cs8WVblC1MANEWkqPgdzBjhb1AxUgq0iUoJlbn1fE/lDYN0mIgU4P/xrktfoFkQbLg10ikuH8eWlvBZ94b7j/IP997T75Po1Zg4abcaf8idnHwZoC8AAAAAASUVORK5CYII=" />
+                        </div>
+                    </div>
+                    <% }) %>
+
+                </div>
+
+            </div>
+    </div>
+    <script>
+        var params = new URLSearchParams(window.location.search);
+        var userD = params.get('userD');
+        $(document).ready(function () {
+            $('.like-button').click(function () {
+                const postId = $(this).data('post-id');
+                $.ajax({
+                    url: `/posts/${postId}/like`,
+                    method: 'PUT',
+                    data: {
+                        userId: userD
+                    },
+                    cache: false,
+                    success: function (response) {
+                        const likesNumber = $(`.post[data-post-id="${postId}"] .likes-number`);
+                        const likeButton = $(`.post[data-post-id="${postId}"] .like-button`);
+                        const isLiked = likeButton.text() === 'Liked';
+                        if (isLiked) {
+                            likesNumber.text(parseInt(likesNumber.text()) - 1);
+                            likeButton.text('Like');
+                        } else {
+                            likesNumber.text(parseInt(likesNumber.text()) + 1);
+                            likeButton.text('Liked');
+                        }
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            });
+            $('.profile').click(function () {
+
+                $.ajax({
+                    url: `/profile/${userD}`,
+                    method: 'GET',
+
+                    cache: false,
+                    success: function (response) {
+                        window.location.replace(`/profile/${userD}`)
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+
+            });
+        });
+        $('.post').click(function () {
+
+            $.ajax({
+                url: `/create/${userD}`,
+                method: 'GET',
+
+                cache: false,
+                success: function (response) {
+                    window.location.replace(`/create/${userD}`)
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+
+        });
+     
+        const likeButton2 = document.querySelector('.like-button');
+
+        likeButton2.addEventListener('click', () => {
+            console.log('clicked')
+            likeButton2.classList.toggle('clicked');
+        });
+    </script>
+</body>
+
+</html>

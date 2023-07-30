@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Messages</title>
+	<style>
+		body {
+	font-family: Arial, sans-serif;
+}
+
+header {
+	background-color: #007bff;
+	color: #fff;
+	padding: 20px;
+}
+
+h1 {
+	margin: 0;
+}
+
+nav ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: flex;
+}
+
+nav ul li {
+	margin-right: 20px;
+}
+
+nav ul li a {
+	color: #fff;
+	text-decoration: none;
+}
+
+main {
+	margin: 20px;
+}
+
+h2 {
+	color: #007bff;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+li {
+	padding: 20px;
+	border-bottom: 1px solid #ddd;
+}
+
+li a {
+	display: block;
+	text-decoration: none;
+	color: #333;
+}
+
+li h3 {
+	margin: 0;
+	color: #007bff;
+}
+
+li p {
+	margin: 0;
+	color: #666;
+}
+
+li span {
+	display: block;
+	color: #bbb;
+	font-size: 12px;
+	margin-top: 5px;
+}
+li.unread {
+	background-color: #e5e5e5;
+}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Messages</h1>
+		<nav>
+			<ul>
+				<li><a href="#">Inbox</a></li>
+				<li><a href="#">Sent</a></li>
+				<li><a href="#">Trash</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<h2>Inbox</h2>
+		<ul>
+			<li class="unread">
+				<a href="#">
+					<h3>Message from John Doe</h3>
+					<p>Hey, how are you doing?</p>
+					<span>2 hours ago</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<h3>Message from Jane Smith</h3>
+					<p>Can you please send me the report?</p>
+					<span>5 hours ago</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<h3>Message from Bob Johnson</h3>
+					<p>Thanks for your help yesterday!</p>
+					<span>1 day ago</span>
+				</a>
+			</li>
+		</ul>
+	</main>
+</body>
+</html>
